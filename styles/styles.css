@@ -1,9 +1,13 @@
 html,
-body {
+body,
+h1,
+h2,
+h3,
+p {
   margin: 0;
   padding: 0;
   border: 0;
-  color: #333333;
+  font-weight: lighter;
   text-align: center;
 }
 
@@ -12,46 +16,159 @@ body {
   flex-direction: column;
   height: 100svh;
   width: 100%;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-
-  background: linear-gradient(26deg, #858688, #bbbabf);
+  background-image: url("/clean-white-rough-wall-as-texture-background-plaster-blank-surfacexa_117930-1685.avif");
+  /* background-color: rgb(238 238 238); */
+  /* background-blend-mode: multiply; */
+  background-size: cover;
 }
 
-.image {
+.stroke {
+  display: grid;
+  justify-content: center;
+  overflow: hidden;
+  animation: stroke 500ms forwards;
+  animation-timing-function: cubic-bezier(1, 0, 0.6, 0.84);
+}
+
+.stroke > img {
+  height: 140px;
+  width: 125px;
+  object-fit: cover;
+  object-position: top;
+  rotate: 180deg;
+  filter: invert(83%) sepia(3%) saturate(3109%) hue-rotate(318deg)
+    brightness(81%) contrast(80%);
+
+  scale: 1 2;
+  translate: 0 -60px;
+}
+
+header > h3 {
+  opacity: 0;
+
   position: relative;
-}
-
-img {
-  border: 10px solid white;
-  width: 75%;
-  max-width: 50vh;
+  animation: fall 1.3s forwards;
+  animation-delay: 700ms;
 }
 
 h1 {
-  font-size: 60px;
+  opacity: 0;
+  letter-spacing: 8px;
+  font-size: 50px;
+  color: #ae755c;
+  animation: appear ease-in-out 1s forwards;
+  animation-delay: 1.1s;
+}
+
+h1 > p {
+  font-family: "Ms Madi", cursive;
+  font-size: 40px;
+  color: #b98e86c9;
 }
 
 h2 {
-  margin: 0;
-  font-size: 60px;
+  font-size: 28px;
+  color: #585858;
+}
+
+.date {
+  font-size: 35px;
+  word-spacing: 15px;
+  letter-spacing: 5px;
+}
+
+.date > span {
+  display: inline-block;
+  opacity: 0;
+
+  animation: pop 1.2s forwards;
+}
+
+.date > mark {
+  display: inline-block;
+  background-color: transparent;
+  opacity: 0;
+
+  animation: appear 4s forwards;
+  animation-delay: 2s;
+}
+
+.date span:nth-of-type(1) {
+  animation-delay: 2.4s;
+}
+.date span:nth-of-type(2) {
+  animation-delay: 2.2s;
+}
+.date span:nth-of-type(3) {
+  animation-delay: 2s;
 }
 
 h3 {
-  font-size: 35px;
-  width: 70%;
+  letter-spacing: 3px;
+  font-size: 30px;
+  font-family: "Ms Madi", cursive;
+  color: #b98e86c9;
 }
 
-@media (max-width: 720px) {
-  h1 {
-    font-size: 35px;
+footer {
+  margin-bottom: 50px;
+  opacity: 0;
+
+  position: relative;
+  animation: fall 1.3s forwards;
+  animation-delay: 2.5s;
+}
+
+@keyframes stroke {
+  0% {
+    max-height: 0;
   }
 
-  h2 {
-    font-size: 35px;
+  100% {
+    max-height: 150px;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
   }
 
-  h3 {
-    font-size: 20px;
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fall {
+  0% {
+    opacity: 0;
+    top: -35px;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+@keyframes pop {
+  0% {
+    opacity: 0;
+    scale: 2.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    scale: 1;
   }
 }
